@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PumpkinSoup.PlayingCards.Interfaces", "PumpkinSoup.PlayingCards.Interfaces\PumpkinSoup.PlayingCards.Interfaces.csproj", "{C1BC27DB-A43D-47B1-A73A-6E9D96118AFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PumpkinSoup.PlayingCards.Cards", "PumpkinSoup.PlayingCards.Cards\PumpkinSoup.PlayingCards.Cards.csproj", "{89FC2860-679C-4FC6-ACB7-33918B9B2A1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PumpkinSoup.PlayingCards.Cards.Test", "PumpkinSoup.PlayingCards.Cards.Test\PumpkinSoup.PlayingCards.Cards.Test.csproj", "{67C1AA5D-6945-4928-BCB7-2F58AB00A22B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{C1BC27DB-A43D-47B1-A73A-6E9D96118AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1BC27DB-A43D-47B1-A73A-6E9D96118AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1BC27DB-A43D-47B1-A73A-6E9D96118AFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89FC2860-679C-4FC6-ACB7-33918B9B2A1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89FC2860-679C-4FC6-ACB7-33918B9B2A1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89FC2860-679C-4FC6-ACB7-33918B9B2A1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89FC2860-679C-4FC6-ACB7-33918B9B2A1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67C1AA5D-6945-4928-BCB7-2F58AB00A22B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67C1AA5D-6945-4928-BCB7-2F58AB00A22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67C1AA5D-6945-4928-BCB7-2F58AB00A22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67C1AA5D-6945-4928-BCB7-2F58AB00A22B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
