@@ -35,6 +35,7 @@
     <Reference Include="Gallio" />
     <Reference Include="MbUnit" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -51,6 +52,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CardTest.cs" />
+    <Compile Include="Models\DeckTest.cs" />
+    <Compile Include="Factories\StandardDeckFactoryTest.cs" />
+    <Compile Include="Factories\StandardHandFactoryTest.cs" />
+    <Compile Include="Models\HandTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Factories\StandardCardFactoryTest.cs" />
   </ItemGroup>
@@ -64,9 +70,7 @@
       <Name>PumpkinSoup.PlayingCards.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\CheatingException.cs" />
+    <Compile Include="Exceptions\TooManyCardsInHandException.cs" />
     <Compile Include="Factories\StandardCardFactory.cs" />
     <Compile Include="Factories\StandardDeckFactory.cs" />
     <Compile Include="Factories\StandardHandFactory.cs" />

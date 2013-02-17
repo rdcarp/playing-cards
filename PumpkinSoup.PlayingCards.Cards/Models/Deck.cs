@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace PumpkinSoup.PlayingCards.Cards.Models
 	public class Deck : IDeck
 	{
 		private bool _isEmpty;
+		private int _count;
 
 		internal Deck()
 		{
@@ -18,6 +20,11 @@ namespace PumpkinSoup.PlayingCards.Cards.Models
 		public bool IsEmpty
 		{
 			get { return _isEmpty; }
+		}
+
+		public int Count
+		{
+			get { return _count; }
 		}
 
 		public void Shuffle()
@@ -38,6 +45,16 @@ namespace PumpkinSoup.PlayingCards.Cards.Models
 		public IEnumerable<ICard> Deal(int numberToDeal)
 		{
 			throw new NotImplementedException();
+		}
+
+		public IEnumerator<ICard> GetEnumerator()
+		{
+			throw new NotImplementedException();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
 		}
 	}
 }

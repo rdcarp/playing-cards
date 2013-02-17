@@ -2,11 +2,12 @@
 
 namespace PumpkinSoup.PlayingCards.Interfaces
 {
-	public interface IDeck
+	public interface IDeck : IEnumerable<ICard>
 	{
 		bool IsEmpty { get; }
-		void Shuffle();
+		int Count { get; }
 
+		void Shuffle();
 		void Burn(int numberToBurn = 1);
 		ICard Deal();
 		IEnumerable<ICard> Deal(int numberToDeal);

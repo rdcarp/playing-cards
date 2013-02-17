@@ -9,9 +9,22 @@ namespace PumpkinSoup.PlayingCards.Cards.Models
 {
 	public class Hand : IHand
 	{
-		private int _count;
-		private bool _isReadOnly;
 		private int? _maxSize;
+		private int _count;
+		private bool _readOnly;
+
+		internal Hand() : this(null)
+		{	
+		}
+		internal Hand(int maxSize) : this(null, false, maxSize)
+		{
+		}
+		internal Hand(IEnumerable<ICard> cards, bool readOnly = false, int? maxSize = null)
+		{
+			Add(cards);
+			_readOnly = readOnly;
+			_maxSize = maxSize;
+		}
 
 		public IEnumerator<ICard> GetEnumerator()
 		{
@@ -23,29 +36,9 @@ namespace PumpkinSoup.PlayingCards.Cards.Models
 			return GetEnumerator();
 		}
 
-		public void Add(ICard item)
+		public int? MaxSize
 		{
-			throw new NotImplementedException();
-		}
-
-		public void Clear()
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool Contains(ICard item)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void CopyTo(ICard[] array, int arrayIndex)
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool Remove(ICard item)
-		{
-			throw new NotImplementedException();
+			get { return _maxSize; }
 		}
 
 		public int Count
@@ -53,14 +46,9 @@ namespace PumpkinSoup.PlayingCards.Cards.Models
 			get { return _count; }
 		}
 
-		public bool IsReadOnly
+		public bool ReadOnly
 		{
-			get { return _isReadOnly; }
-		}
-
-		public int? MaxSize
-		{
-			get { return _maxSize; }
+			get { return _readOnly; }
 		}
 
 		public void Add(params ICard[] cards)
@@ -68,7 +56,17 @@ namespace PumpkinSoup.PlayingCards.Cards.Models
 			throw new NotImplementedException();
 		}
 
+		public void Add(IEnumerable<ICard> cards)
+		{
+			throw new NotImplementedException();
+		}
+
 		public void Remove(params ICard[] cards)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Clear()
 		{
 			throw new NotImplementedException();
 		}
