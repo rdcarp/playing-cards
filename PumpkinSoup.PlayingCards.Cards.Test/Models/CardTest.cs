@@ -1,26 +1,43 @@
 ﻿using MbUnit.Framework;
+using PumpkinSoup.PlayingCards.Cards.Factories;
 using PumpkinSoup.PlayingCards.Cards.Models;
 using PumpkinSoup.PlayingCards.Interfaces;
 
 namespace PumpkinSoup.PlayingCards.Cards.Test.Models
 {
-    
-    
-    /// <summary>
-    ///This is a test class for CardTest and is intended
-    ///to contain all CardTest Unit Tests
-    ///</summary>
+	/// <summary>
+	///This is a test class for CardTest and is intended
+	///to contain all CardTest Unit Tests
+	///</summary>
 	[TestFixture]
 	public class CardTest
 	{
+		private ICardFactory _cardFactory;
+		private ICard _card1;
+		private ICard _card2;
+		private ICard _card3;
+		private ICard _card4;
+
+		[FixtureSetUp]
+		public void FixtureSetUp()
+		{
+			_cardFactory = new StandardCardFactory();
+
+			_card1 = _cardFactory.CreateCard(10);
+			_card2 = _cardFactory.CreateCard(20);
+			_card3 = _cardFactory.CreateCard(30);
+			_card4 = _cardFactory.CreateCard(10);
+		}
+
 		/// <summary>
 		///A test for Card Constructor
 		///</summary>
 		[Test]
 		public void CardConstructorTest()
 		{
-			Card target = new Card();
-			Assert.Inconclusive("TODO: Implement code to verify target");
+			var card = new Card();
+
+			Assert.IsNotNull(card);
 		}
 
 		/// <summary>
@@ -29,29 +46,28 @@ namespace PumpkinSoup.PlayingCards.Cards.Test.Models
 		[Test]
 		public void CompareToTest()
 		{
-			Card target = new Card(); // TODO: Initialize to an appropriate value
-			ICard other = null; // TODO: Initialize to an appropriate value
-			int expected = 0; // TODO: Initialize to an appropriate value
-			int actual;
-			actual = target.CompareTo(other);
-			Assert.AreEqual(expected, actual);
-			Assert.Inconclusive("Verify the correctness of this test method.");
+			var comparrison = _card1.CompareTo(_card2);
+			Assert.LessThan(comparrison, 0);
+
+			comparrison = _card3.CompareTo(_card2);
+			Assert.GreaterThan(comparrison, 0);
+
+			comparrison = _card1.CompareTo(_card4);
+			Assert.AreEqual(comparrison, 0);
 		}
 
 		/// <summary>
 		///A test for Equals
 		///</summary>
 		[Test]
-		public void EqualsTest()
+		[Row(10, 20, false)]
+		[Row(10, 40, false)]
+		[Row(10, 10, true)]
+		public void EqualsTest(int index1, int index2, bool expected)
 		{
-			Card target = new Card(); // TODO: Initialize to an appropriate value
-			ICard x = null; // TODO: Initialize to an appropriate value
-			ICard y = null; // TODO: Initialize to an appropriate value
-			bool expected = false; // TODO: Initialize to an appropriate value
-			bool actual;
-			actual = target.Equals(x, y);
+			bool actual = _card1.Suit == _card2.Suit && _card1.Value == _card2.Value;
+
 			Assert.AreEqual(expected, actual);
-			Assert.Inconclusive("Verify the correctness of this test method.");
 		}
 
 		/// <summary>
@@ -75,22 +91,26 @@ namespace PumpkinSoup.PlayingCards.Cards.Test.Models
 		[Test]
 		public void SuitTest()
 		{
-			Card target = new Card(); // TODO: Initialize to an appropriate value
-			int actual;
-			actual = target.Suit;
-			Assert.Inconclusive("Verify the correctness of this test method.");
+			for (int i = 0; i < 54; i++)
+			{
+				var target = _cardFactory.CreateCard(i);
+				
+				Assert.Between(target.Suit, 1, 4);
+			}
 		}
 
 		/// <summary>
 		///A test for Value
 		///</summary>
 		[Test]
-		public void ValueTest()
+		public void ValueTest(int index)
 		{
-			Card target = new Card(); // TODO: Initialize to an appropriate value
-			int actual;
-			actual = target.Value;
-			Assert.Inconclusive("Verify the correctness of this test method.");
+			for (int i = 0; i < 54; i++)
+			{
+				var target = _cardFactory.CreateCard(index);
+
+				Assert.Between(target.Value, 2, 14);
+			}
 		}
 	}
 }
