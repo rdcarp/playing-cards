@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using MbUnit.Framework;
+using NUnit.Framework;
 using PumpkinSoup.PlayingCards.Cards.Exceptions;
 using PumpkinSoup.PlayingCards.Cards.Factories;
 using PumpkinSoup.PlayingCards.Cards.Models;
@@ -7,6 +7,7 @@ using System;
 using PumpkinSoup.PlayingCards.Interfaces;
 using System.Collections.Generic;
 using System.Collections;
+using PumpkinSoup.PlayingCards.Cards.Test.Attributes;
 
 namespace PumpkinSoup.PlayingCards.Cards.Test.Models
 {
@@ -26,7 +27,7 @@ namespace PumpkinSoup.PlayingCards.Cards.Test.Models
 
 	    private IHand _hand;
 
-		[FixtureSetUp]
+		[SetUp]
 		public void FixtureSetUp()
 		{
 			_cardFactory = new StandardCardFactory();

@@ -1,27 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Gallio.Framework;
-using MbUnit.Framework;
-using MbUnit.Framework.ContractVerifiers;
 using PumpkinSoup.PlayingCards.Cards.Factories;
 using PumpkinSoup.PlayingCards.Interfaces;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace PumpkinSoup.PlayingCards.Cards.Test.Factories
 {
-	[TestFixture]
+	[TestClass]
 	public class StandardDeckFactoryTest
 	{
 		private StandardDeckFactory _factory;
 
-		[FixtureSetUp]
+		[TestInitialize]
 		public void FixtureSetUp()
 		{
 			_factory = new StandardDeckFactory();
 			Assert.IsNotNull(_factory);
 		}
 
-		[Test]
+		[TestMethod]
 		public void CreateDeckTest()
 		{
 			var deck = _factory.CreateDeck();
@@ -29,15 +27,15 @@ namespace PumpkinSoup.PlayingCards.Cards.Test.Factories
 			Assert.IsNotNull(deck);
 		}
 
-		[Test]
-		[Row()]
-		public void CreateDeckTest(params ICard[] cards)
-		{
-			var deck = _factory.CreateDeck(cards);
+		// [TestMethod]
+		// public void CreateDeckTest(params ICard[] cards)
+		// {
+			
+		// 	var deck = _factory.CreateDeck(cards);
 
-			Assert.IsNotNull(deck);
-			Assert.AreEqual(52, deck.Count);
-			Assert.AreEqual(false, deck.IsEmpty);
-		}
+		// 	Assert.IsNotNull(deck);
+		// 	Assert.AreEqual(52, deck.Count);
+		// 	Assert.AreEqual(false, deck.IsEmpty);
+		// }
 	}
 }

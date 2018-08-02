@@ -1,7 +1,7 @@
-﻿using MbUnit.Framework;
-using PumpkinSoup.PlayingCards.Cards.Factories;
+﻿using PumpkinSoup.PlayingCards.Cards.Factories;
 using PumpkinSoup.PlayingCards.Cards.Models;
 using PumpkinSoup.PlayingCards.Interfaces;
+using NUnit.Framework;
 
 namespace PumpkinSoup.PlayingCards.Cards.Test.Models
 {
@@ -18,7 +18,7 @@ namespace PumpkinSoup.PlayingCards.Cards.Test.Models
 		private ICard _card3;
 		private ICard _card4;
 
-		[FixtureSetUp]
+		[SetUp]
 		public void FixtureSetUp()
 		{
 			_cardFactory = new StandardCardFactory();
@@ -32,7 +32,7 @@ namespace PumpkinSoup.PlayingCards.Cards.Test.Models
 		/// <summary>
 		///A test for Card Constructor
 		///</summary>
-		[Test]
+		[TestCase]
 		public void CardConstructorTest()
 		{
 			var card = new Card();
@@ -43,37 +43,37 @@ namespace PumpkinSoup.PlayingCards.Cards.Test.Models
 		/// <summary>
 		///A test for CompareTo
 		///</summary>
-		[Test]
+		[TestCase]
 		public void CompareToTest()
 		{
 			var comparrison = _card1.CompareTo(_card2);
-			Assert.LessThan(comparrison, 0);
+		    Assert.Less(comparrison, 0);
 
 			comparrison = _card3.CompareTo(_card2);
-			Assert.GreaterThan(comparrison, 0);
+			Assert.Greater(comparrison, 0);
 
 			comparrison = _card1.CompareTo(_card4);
 			Assert.AreEqual(comparrison, 0);
 		}
 
-		/// <summary>
-		///A test for Equals
-		///</summary>
-		[Test]
-		[Row(10, 20, false)]
-		[Row(10, 40, false)]
-		[Row(10, 10, true)]
-		public void EqualsTest(int index1, int index2, bool expected)
-		{
-			bool actual = _card1.Suit == _card2.Suit && _card1.Value == _card2.Value;
+		// /// <summary>
+		// ///A test for Equals
+		// ///</summary>
+		// [Test]
+		// [Row(10, 20, false)]
+		// [Row(10, 40, false)]
+		// [Row(10, 10, true)]
+		// public void EqualsTest(int index1, int index2, bool expected)
+		// {
+		// 	bool actual = _card1.Suit == _card2.Suit && _card1.Value == _card2.Value;
 
-			Assert.AreEqual(expected, actual);
-		}
+		// 	Assert.AreEqual(expected, actual);
+		// }
 
 		/// <summary>
 		///A test for GetHashCode
 		///</summary>
-		[Test]
+		[TestCase]
 		public void GetHashCodeTest()
 		{
 			Card target = new Card(); // TODO: Initialize to an appropriate value
@@ -88,28 +88,29 @@ namespace PumpkinSoup.PlayingCards.Cards.Test.Models
 		/// <summary>
 		///A test for Suit
 		///</summary>
-		[Test]
+		[TestCase]
 		public void SuitTest()
 		{
 			for (int i = 0; i < 54; i++)
 			{
 				var target = _cardFactory.CreateCard(i);
-				
-				Assert.Between(target.Suit, 1, 4);
+
+                Assert.GreaterOrEqual(target.Suit, 1);
+                Assert.LessOrEqual(target.Suit, 4);
 			}
 		}
 
 		/// <summary>
 		///A test for Value
 		///</summary>
-		[Test]
+		[TestCase]
 		public void ValueTest(int index)
 		{
 			for (int i = 0; i < 54; i++)
 			{
 				var target = _cardFactory.CreateCard(index);
-
-				Assert.Between(target.Value, 2, 14);
+				Assert.IsTrue(target.Value >= 2);
+				Assert.IsTrue(target.Value <= 14);
 			}
 		}
 	}

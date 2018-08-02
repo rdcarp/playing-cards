@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Gallio.Framework;
-using MbUnit.Framework;
-using MbUnit.Framework.ContractVerifiers;
 using PumpkinSoup.PlayingCards.Cards.Factories;
 using PumpkinSoup.PlayingCards.Cards.Models;
 using PumpkinSoup.PlayingCards.Interfaces;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace PumpkinSoup.PlayingCards.Cards.Test.Factories
 {
-	[TestFixture]
+	[TestClass]
 	public class StandardHandFactoryTest
 	{
 		private static StandardHandFactory _factory;
@@ -18,7 +16,7 @@ namespace PumpkinSoup.PlayingCards.Cards.Test.Factories
 		private static List<ICard> someCardsWithDoublers;
 		private static List<ICard> emptyCardList;
 
-		[FixtureSetUp]
+		[TestInitialize]
 		public void FixtureSetUp()
 		{
 			_factory = new StandardHandFactory();
@@ -38,7 +36,7 @@ namespace PumpkinSoup.PlayingCards.Cards.Test.Factories
 
 		}
 
-		[Test]
+		[TestMethod]
 		public void CreateHandTest()
 		{
 			var hand = _factory.CreateHand();
@@ -47,7 +45,7 @@ namespace PumpkinSoup.PlayingCards.Cards.Test.Factories
 			Assert.AreEqual(0, hand.Count);
 		}
 
-		[Test]
+		[TestMethod]
 		public void CreateHandDistinctCardsTest()
 		{
 			var hand = _factory.CreateHand(someUniqueCards);
@@ -56,7 +54,7 @@ namespace PumpkinSoup.PlayingCards.Cards.Test.Factories
 			Assert.AreEqual(someUniqueCards.Count, hand.Count);
 		}
 		
-		[Test]
+		[TestMethod]
 		public void CreateHandDuplicateCardsTest()
 		{
 			var hand = _factory.CreateHand(someCardsWithDoublers);
@@ -65,7 +63,7 @@ namespace PumpkinSoup.PlayingCards.Cards.Test.Factories
 			Assert.AreEqual(someCardsWithDoublers.Count, hand.Count);
 		}
 
-		[Test]
+		[TestMethod]
 		public void CreateHandEmptyCardListTest()
 		{
 			var hand = _factory.CreateHand(emptyCardList);
